@@ -15,17 +15,20 @@ Others docs :
 
 # ES wording
 
-    - filters
-    - analysers
+    - filter: non scoring part of the query ("Does this document match this query clause?")
+    - analysers/analysis: process of converting full text to terms (example: "Foo-Bar" => ["foo","bar"])
+    - query: answers the question "how well does this document match to the clause" in order to compute a relevance score
+    - [glossary](https://www.elastic.co/guide/en/elasticsearch/reference/current/glossary.html)
 
 # Search
 
     - filters does not affect the score but the presence of the document in the result.
     - ES uses analysers to change value during analysis (cf the example below)
-
     - [Range Query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html)
     - [Match Query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html)
     - [Synonyms graph token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-graph-tokenfilter.html)
+    - [Boolean Queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html)
+    - [Named queries for debug I guess](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-body.html#request-body-search-queries-and-filters)
 
 ## term vs match
 
@@ -44,3 +47,7 @@ This is because the default standard analyzer changes text field values as follo
     - Lowercases the tokens
 
 cf: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html
+
+## Boosting
+
+You can use boosting at indexing time however it is not recomended by [elastic search doc](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-boost.html)
